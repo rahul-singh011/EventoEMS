@@ -10,7 +10,6 @@ export default function EventPage() {
   const {id} = useParams();
   const [event, setEvent] = useState(null);
 
-  //! Fetching the event data from server by ID ------------------------------------------
   useEffect(()=>{
     if(!id){
       return;
@@ -22,7 +21,6 @@ export default function EventPage() {
     });
   }, [id])
 
-  //! Copy Functionalities -----------------------------------------------
   const handleCopyLink = () => {
     const linkToShare = window.location.href;
     navigator.clipboard.writeText(linkToShare).then(() => {

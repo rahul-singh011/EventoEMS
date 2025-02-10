@@ -267,7 +267,7 @@ export default function CreatEvent() {
               <tbody>
                 {tableData2.map((row, index) => (
                   <tr key={index}>
-                    <td className="text-black"> {/* Add text-black className here */}
+                    <td className="text-black"> {}
                       <input
                         type="text"
                         value={row.description}
@@ -278,7 +278,7 @@ export default function CreatEvent() {
                         }}
                       />
                     </td>
-                    <td className="text-black"> {/* Add text-black className here */}
+                    <td className="text-black"> {}
                       <input
                         type="text"
                         value={row.price}
@@ -289,7 +289,7 @@ export default function CreatEvent() {
                         }}
                       />
                     </td>
-                    <td className="text-black"> {/* Add text-black className here */}
+                    <td className="text-black"> {}
                       <input
                         type="text"
                         value={row.reference}

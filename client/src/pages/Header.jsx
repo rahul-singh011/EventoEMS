@@ -13,7 +13,6 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef();
 
-  //! Fetch events from the server -------------------------------------------------
   useEffect(() => {
     
     axios.get("/events").then((response) => {
@@ -24,16 +23,13 @@ export default function Header() {
   }, []);
 
 
-  //! Search bar functionality----------------------------------------------------
   useEffect(() => {
     const handleDocumentClick = (event) => {
-      // Check if the clicked element is the search input or its descendant
       if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
         setSearchQuery("");
       }
     };
 
-    // Listen for click events on the entire document
     document.addEventListener("click", handleDocumentClick);
 
     return () => {
@@ -41,12 +37,10 @@ export default function Header() {
     };
   }, []); 
   
-  //! Logout Function --------------------------------------------------------
   async function logout(){
     await axios.post('/logout');
     setUser(null);
   }
-//! Search input ----------------------------------------------------------------
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -71,17 +65,17 @@ export default function Header() {
             {/* <div className='text-sm text-gray-300 font-semibold'>Search</div> */}      
           </div> 
 
-          {/*------------------------- Search Functionality -------------------  */}
+          
           {searchQuery && (
           <div className="p-2 w-144 z-10 absolute rounded left-[28.5%] top-14 md:w-[315px] md:left-[17%] md:top-16 lg:w-[540px] lg:left-[12%] lg:top-16 bg-white">
-            {/* Filter events based on the search query */}
+            
             {events
               .filter((event) =>
                 event.title.toLowerCase().includes(searchQuery.toLowerCase())
               )
               .map((event) => (
                 <div key={event._id} className="p-2">
-                  {/* Display event details */}
+                  
                   <Link to={"/event/" + event._id}>
                       <div className="text-black text-lg w-full">{event.title}</div>
                   </Link>
@@ -91,7 +85,7 @@ export default function Header() {
           )}
     
           
-          <Link to={'/createEvent'}> {/*TODO:Route create event page after creating it */}
+          <Link to={'/createEvent'}> 
             <div className='hidden md:flex flex-col place-items-center py-1 px-2 rounded text-primary cursor-pointer hover:text-primarydark hover:bg-white hover:shadow-sm shadow-gray-200 hover:transition-shadow duration-1500'>
               <button>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 stroke-3 py-1">

@@ -1,4 +1,3 @@
-// import React from 'react'
 import axios from "axios";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, addMonths } from "date-fns";
 import { useEffect, useState } from "react";
@@ -10,7 +9,6 @@ export default function CalendarView() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [events, setEvents] = useState([]);
   
-//! Fetch events from the server -------------------------------------------------------
   useEffect(() => {
     
     axios.get("/events").then((response) => {
@@ -26,7 +24,6 @@ export default function CalendarView() {
 
   const firstDayOfWeek = firstDayOfMonth.getDay();
 
-  //! Create an array of empty cells to align days correctly-----------------------------------------
   const emptyCells = Array.from({ length: firstDayOfWeek }, (_, index) => <div key={`empty-${index}`} className="p-2 bg-white ring-4 ring-background"></div>);
 
 
